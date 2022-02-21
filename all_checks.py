@@ -21,11 +21,9 @@ def check_root_full():
 
 
 def main():
-<<<<<<< HEAD
-  """final main function"""
-=======
+  
   """ It is a main function"""
->>>>>>> 037ecd3 (updated main function to include description)
+  
   checks = [
     (check_root_full, "Root Partition full")
     (check_reboot,"Pending reboot")
