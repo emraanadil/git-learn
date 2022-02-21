@@ -21,10 +21,20 @@ def check_root_full():
 
 
 def main():
-  """main function in main branch"""
-  if check_reboot():
-    print("Pending Reboot.")
+  """final main function"""
+  checks = [
+    (check_root_full, "Root Partition full")
+    (check_reboot,"Pending reboot")
+  ]
+  true = True
+  for check,msg in checks:
+    if check():
+      print(msg)
+      true = False
+  if not true:
     sys.exit(1)
-  if check_root_full():
-    print("Root Partition Full")
-    sys.exit(1)
+  print("Everything OK")
+  sys.exit(0)
+
+
+main()
