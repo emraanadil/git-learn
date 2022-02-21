@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+from tabnanny import check
 
 def check_reboot():
   """Returns True if computer has pending reboot"""
@@ -14,11 +15,16 @@ def check_disk_full(disk,min_gb,min_percent):
     return True
   return False
 
+def check_root_full():
+  """Return True if root partition is full, false otherwise """
+  return check_disk_full('/',2, 10)
+
+
 def main():
   """main function in main branch"""
   if check_reboot():
     print("Pending Reboot.")
     sys.exit(1)
-  if check_disk_full("/", 2, 10):
-    print("Disk Full")
+  if check_root_full():
+    print("Root Partition Full")
     sys.exit(1)
